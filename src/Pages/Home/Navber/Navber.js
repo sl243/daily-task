@@ -8,7 +8,7 @@ const Navber = () => {
         <li><Link to='/completedtask' className='font-bold'>Completed Task</Link></li>
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-700">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -26,7 +26,7 @@ const Navber = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className="btn btn-ghost">Signin</Link>
+                <Link className="btn btn-ghost font-bold">Signin</Link>
             </div>
         </div>
     );
