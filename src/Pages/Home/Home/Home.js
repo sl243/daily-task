@@ -1,9 +1,10 @@
 import React from 'react';
+import DailyTask from '../DailyTask/DailyTask';
 
 const Home = () => {
     return (
         <div>
-            <h1>This is Home</h1>
+            <DailyTask></DailyTask>
         </div>
     );
 };

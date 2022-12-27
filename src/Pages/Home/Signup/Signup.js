@@ -1,12 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Context/AuthProvider';
 
 const Signup = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const { userSignUp, googleSignIn } = useContext(AuthContext)
 
     const handleSignUp = data => {
 
+        userSignUp(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
+
+    // Google Sign in
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => {
+                console.error(error)
+            })
     }
 
     return (
@@ -62,7 +85,7 @@ const Signup = () => {
                 <div className="divider ">OR</div>
             </div>
             <div className="form-control w-3/4 mx-auto mt-3">
-                <button className='btn btn-outline w-full mb-10'>CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogleSignIn} className='btn btn-outline w-full mb-10'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );

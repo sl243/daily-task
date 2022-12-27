@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Context/AuthProvider';
 
 const Navber = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+        .then(() =>{})
+        .catch(()=>{})
+    }
     const ItemMenu = <>
         <li><Link to='/addtask' className='font-bold'>Add Task</Link></li>
         <li><Link to='/mytask' className='font-bold'>My Task</Link></li>
@@ -25,9 +33,15 @@ const Navber = () => {
                     {ItemMenu}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <Link className="btn btn-ghost font-bold">Signin</Link>
-            </div>
+            {user?.uid ?
+                <div className="navbar-end">
+                    <Link onClick={handleLogOut} className="btn btn-ghost font-bold">Logout</Link>
+                </div>
+                :
+                <div className="navbar-end">
+                    <Link to='/login' className="btn btn-ghost font-bold">Login</Link>
+                </div>
+            }
         </div>
     );
 };
