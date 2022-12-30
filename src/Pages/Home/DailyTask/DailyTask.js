@@ -17,7 +17,7 @@ const DailyTask = () => {
         };
 
         // daily task store in database
-        fetch('http://localhost:5000/tasks', {
+        fetch('https://daily-task-server-eight.vercel.app/tasks', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

@@ -26,7 +26,7 @@ const AddTask = () => {
                     }
 
                     // save infomation in the database
-                    fetch('http://localhost:5000/addtasks', {
+                    fetch('https://daily-task-server-eight.vercel.app/addtasks', {
                         method: 'POST',
                         headers: {
                             'content-type' : 'application/json',
