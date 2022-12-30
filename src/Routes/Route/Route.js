@@ -1,6 +1,7 @@
 import AddTask from "../../Pages/Home/AddTask/AddTask";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Home/Login/Login";
+import MyTask from "../../Pages/Home/MyTask/MyTask";
 import Signup from "../../Pages/Home/Signup/Signup";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
             {
                 path: '/addtask',
                 element: <AddTask></AddTask>
+            },
+            {
+                path: '/mytask',
+                element: <MyTask></MyTask>
             }
         ]
     }

@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
+import { Navigate } from 'react-router-dom';
+import { AuthContext } from '../../../Context/AuthProvider';
 
 const DailyTask = () => {
+    const {user} = useContext(AuthContext)
     const { register, formState: { errors }, handleSubmit } = useForm();
 
+    
     const hanldeDailyTask = data => {
 
         const task = {
-            DailyTask: data.name
+            DailyTask: data.name,
+            email: user?.email
         };
-        console.log(task)
-
-        // const task = data.name
 
         // daily task store in database
         fetch('http://localhost:5000/tasks', {
@@ -24,6 +27,8 @@ const DailyTask = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                toast.success('Your Daily Task Added Successfully')
+                Navigate('/mytask')
             })
             .catch(err => console.error(err))
 

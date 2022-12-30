@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 
 const AddTask = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -35,7 +36,7 @@ const AddTask = () => {
                     .then( res => res.json())
                     .then( result => {
                         console.log(result)
-                        // toast.success(`${data.name} is added successfully`)
+                        toast.success(`${data.name} is added successfully`)
                         // navigate('/dashboard/managedoctors')
                     })
                 }
